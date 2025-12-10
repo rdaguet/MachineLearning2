@@ -1,0 +1,208 @@
+/*
+  Styles généraux et réinitialisation
+*/
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/*
+  Style de la carte principale
+*/
+#card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+#card-description p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/*
+  Styles pour le chargement et les messages (succès/erreur)
+*/
+#card-chargement {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+#card-chargement p {
+    margin: 0;
+}
+
+/* Style par défaut pour le chargement */
+#card-chargement:not(.success):not(.error) {
+    background-color: #f0f8ff; /* Bleu très clair */
+    border: 1px solid #b3d9ff;
+    color: #007bff;
+}
+
+/* Style en cas de succès du chargement */
+#card-chargement.success {
+    background-color: #e6ffed; /* Vert très clair */
+    border: 1px solid #c8e6c9;
+    color: #1a7d36; /* Texte vert foncé */
+}
+
+/* Style en cas d'erreur de chargement */
+#card-chargement.error {
+    background-color: #ffebe6; /* Rouge très clair */
+    border: 1px solid #ffc8c3;
+    color: #cc3300; /* Texte rouge foncé */
+}
+
+/*
+  Style du Canvas (Maintien du style noir et blanc)
+*/
+#card-canvas {
+    margin: 25px auto;
+}
+
+#drawing-canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: #000000; /* Fond noir pour le dessin blanc */
+    border: 3px solid #ccc;
+    border-radius: 8px;
+    cursor: crosshair;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#drawing-canvas:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+/*
+  Styles des boutons
+*/
+#card-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+button {
+    flex-grow: 1;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:disabled {
+    background-color: #cccccc !important;
+    color: #888888 !important;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+#clear-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+#clear-button:not(:disabled):hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+#predict-button {
+    background-color: #28a745; /* Vert pour l'action de prédiction */
+    color: white;
+}
+
+#predict-button:not(:disabled):hover {
+    background-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+/*
+  Style de l'explication / résultat (Ajout de l'affichage des résultats ONNX)
+*/
+#card-explication {
+    margin-top: 25px;
+    padding: 10px;
+    min-height: 40px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+    border-top: 1px solid #eee;
+}
+
+.prediction-result {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #28a745; /* Vert pour le résultat principal */
+    margin-bottom: 5px;
+}
+
+/* Styles pour les barres de confiance */
+.confidence-bars {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.confidence-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.confidence-label {
+    width: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 5px;
+    color: #007bff;
+}
+
+.confidence-fill-container {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background-color: #007bff; /* Bleu pour la barre */
+    transition: width 0.5s ease-out;
+}
+
+.confidence-value {
+    width: 50px;
+    text-align: right;
+    font-weight: 600;
+    color: #333;
+}
