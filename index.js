@@ -121,7 +121,7 @@ async function predict() {
         explicationDiv.innerHTML = '<p style="color: #007bff;">Prédiction en cours...</p>';
         
         const input = preprocessCanvas();
-        const tensor = new ort.Tensor('float32', input, [1, 28, 28]);
+        const tensor = new ort.Tensor('float32', input, [1, 1, 28, 28]);
         const results = await session.run({ [session.inputNames[0]]: tensor });
         const probs = softMax(results[session.outputNames[0]].data);
         const predicted = probs.indexOf(Math.max(...probs));
